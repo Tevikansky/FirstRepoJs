@@ -1,29 +1,18 @@
-let title = "First project";
-let screens = "Простые, Сложные, Интерактивные";
-let screenPrice = 69;
+'use strict';
+
+let title = prompt("Как называется ваш проект?");
+let screens = prompt("Какие типы экранов нужно разработать?");
+let screenPrice = +prompt("Сколько будет стоить данная работа?");
+let adaptive = confirm('Нужен ли адаптив на сайте?');
+let service1 = prompt("Какой дополнительный тип услуги нужен?");
+let servicePrice1 = +prompt('Сколько это будет стоить?');
+let service2 = prompt("Какой дополнительный тип услуги нужен?");
+let servicePrice2 = +prompt('Сколько это будет стоить?');
 let rollback = 76;
-let fullPrice = 45000;
-let adaptive = false;
+let fullPrice = screenPrice + servicePrice1 + servicePrice2;
+let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback / 100)));
 
-console.log(typeof title, typeof fullPrice, typeof adaptive);
-console.log(screens.length);
-console.log('Стоимость верстки экранов', screenPrice, 'рублей/долларов/гривен/юани');
-console.log('Стоимость разработки сайта', fullPrice, 'рублей/долларов/гривен/юани');
-console.log(screens.toLowerCase().split());
-console.log('Процент отката посреднику за работу', fullPrice * (rollback / 100));
 
-title = prompt("Как называется ваш проект?");
-screens = prompt("Какие типы экранов нужно разработать?");
-screenPrice = Number(prompt("Сколько будет стоить данная работа?"));
-adaptive = prompt('Нужен ли адаптив на сайте?').toLowerCase().replace(/[^a-zа-яё\s]/gi, '').trim();
-adaptive = adaptive == "да" ? true : false;
-service1 = prompt("Какой дополнительный тип услуги нужен?");
-servicePrice1 = Number(prompt('Сколько это будет стоить?'));
-service2 = prompt("Какой дополнительный тип услуги нужен?");
-servicePrice2 = Number(prompt('Сколько это будет стоить?'));
-fullPrice = screenPrice + servicePrice1 + servicePrice2;
-servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback / 100)));
-console.log(servicePercentPrice);
 switch (true) {
   case fullPrice >= 30000:
     console.log("Даем скидку в 10%");
@@ -37,3 +26,11 @@ switch (true) {
   default:
     console.log("Что то пошло не так");
 }
+
+console.log(typeof title, typeof fullPrice, typeof adaptive);
+console.log(screens.length);
+console.log(servicePercentPrice);
+
+console.log('Стоимость верстки экранов', screenPrice, 'рублей/долларов/гривен/юани');
+console.log('Стоимость разработки сайта', fullPrice, 'рублей/долларов/гривен/юани');
+console.log('Процент отката посреднику за работу', fullPrice * (rollback / 100));
