@@ -119,7 +119,7 @@ const appData = {
   },
   addScreenBlock: function () {
     const cloneScreen = screens[0].cloneNode(true);
-
+    cloneScreen.querySelector('input[type=text]').value = '';
     screens[screens.length - 1].after(cloneScreen);
     appData.screens.splice(0);
   },
