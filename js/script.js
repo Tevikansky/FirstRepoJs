@@ -72,6 +72,8 @@ const appData = {
   addRollback: function () {
     appData.rollback = rollback.value;
     span.innerHTML = rollback.value + "%";
+    appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
+    appData.showResult()
   },
   addTitle: function () {
     document.title = title.textContent;
@@ -85,6 +87,7 @@ const appData = {
 
 
     appData.showResult()
+    // appData.realTimeRollback();
   },
   showResult: function () {
     totalInput0.value = appData.screenPrice;
@@ -147,7 +150,6 @@ const appData = {
     appData.fullPrice = +appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent;
 
     appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
-    console.log(appData.screens)
   },
 
   getRollbackMessage: function (price) {
