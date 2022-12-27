@@ -121,6 +121,7 @@ const appData = {
     });
   },
   addScreenBlock: function () {
+    screens = document.querySelectorAll('.screen');
     const cloneScreen = screens[0].cloneNode(true);
     cloneScreen.querySelector('input[type=text]').value = '';
     screens[screens.length - 1].after(cloneScreen);
